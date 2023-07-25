@@ -35,7 +35,7 @@ export default function Items({ countries }: Props) {
           <div
             className="rounded-md truncate grid grid-rows-2 cursor-pointer"
             key={country.name.common}
-            onClick={() => router.push(country.name.common)}
+            onClick={() => router.push(country.name.common.replaceAll(' ', ''))}
           >
             <div className="relative">
               <Image
@@ -56,6 +56,6 @@ export default function Items({ countries }: Props) {
           </div>
         )
       })}
-    </div>
+    </div >
   )
 }

@@ -16,11 +16,33 @@
   color:hsl(0, 0%, 52%);
 }
 
+.light .allBkClr,
+.light .allBkClr div,
+.light .allBkClr img,
+.light .allBkClr h2{
+  background-color:hsl(0, 0%, 98%);
+}
+
+html.light{
+  background-color:hsl(0, 0%, 98%);
+}
+
 .dark *:not(.backgroundClr){
   color: white;
   background-color:hsl(209, 23%, 22%);
 }
 
 .dark .backgroundClr {
+  background-color:hsl(207, 26%, 17%);
+}
+
+.dark .allBkClr,
+.dark .allBkClr div,
+.dark .allBkClr img,
+.dark .allBkClr h2{
+  background-color:hsl(207, 26%, 17%);
+}
+
+html.dark{
   background-color:hsl(207, 26%, 17%);
 }

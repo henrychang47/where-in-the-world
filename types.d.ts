@@ -20,12 +20,20 @@ type Country = {
     common: string,
     nativeName: Object,
   },
+  tld: [],
   region: string,
+  subregion: string,
   capital: string[],
   population: number,
+  currencies: {
+    [key: string]: {
+      name: string
+    }
+  },
   flags: {
     png: string,
     svg: string,
     alt: string,
-  }
+  },
+  languages: {}
 }
