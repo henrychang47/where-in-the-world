@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { use } from "react"
 import getCountriesData from "@/lib/getCountriesData";
+import CountryLink from "./components/CountryLink";
 
 type Props = {
   params: {
@@ -9,19 +10,19 @@ type Props = {
   }
 }
 
-function page({ params: { country } }: Props) {
+export default function page({ params: { country } }: Props) {
   const countriesData = use(getCountriesData());
   const countryData = countriesData.find(data => data.name.common.replaceAll(' ', '') === country);
 
   return (
-    <div className="shadow-inner p-12 allBkClr">
+    <div className="shadow-inner p-12 allBgClr">
       <Link href={`/`} >
         <button className="shadow-xl py-3 px-10 rounded-md font-bold hover:scale-110 transition-transform mb-12">
           ← Back
         </button>
       </Link>
       {countryData && (
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-20">
+        <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-20 sm:gap-10">
           <div className="relative aspect-square">
             <Image
               src={countryData.flags.svg}
@@ -31,20 +32,24 @@ function page({ params: { country } }: Props) {
               className="object-contain "
             />
           </div>
-          <div className="">
-            <h2>{countryData.name.common}</h2>
-            <p>Native Name: {Object.values(countryData.name.nativeName)[0].common}</p>
-            <p>Population: {countryData.population.toLocaleString()}</p>
-            <p>Region: {countryData.region}</p>
-            <p>Sub Region: {countryData.subregion}</p>
-            <p>Capital: {countryData.capital}</p>
-            <p>Top Level Domain: {countryData.tld}</p>
-            <p>Currencies: {Object.values(countryData.currencies)[0].name}</p>
-            <p>Languanges: {Object.values(countryData.languages).toString()}</p>
+          <div className="flex flex-col justify-center lg:gap-10 gap-5">
+            <h2 className="font-bold text-4xl">{countryData.name.common}</h2>
+            <div className="grid lg:grid-cols-2 lg:gap-4 gap-2 lg:text-xl">
+              <p>Native Name: {Object.values(countryData.name.nativeName)[0].common}</p>
+              <p>Population: {countryData.population.toLocaleString()}</p>
+              <p>Region: {countryData.region}</p>
+              <p>Sub Region: {countryData.subregion}</p>
+              <p>Capital: {countryData.capital}</p>
+              <p>Top Level Domain: {countryData.tld}</p>
+              <p>Currencies: {Object.values(countryData.currencies)[0].name}</p>
+              <p>Languanges: {Object.values(countryData.languages).toString()}</p>
+            </div>
+            <div className="lg:text-xl">
+              Border Countries: <CountryLink borders={countryData.borders} />
+            </div>
           </div>
         </div>
       )}
     </div>
   )
 }
-export default page

@@ -35,5 +35,7 @@ type Country = {
     svg: string,
     alt: string,
   },
-  languages: {}
+  languages: {},
+  borders: string[],
+  cca3: string,
 }
