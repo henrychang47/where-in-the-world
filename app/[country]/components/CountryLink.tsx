@@ -15,7 +15,7 @@ export default function CountryLink({ borders }: { borders: string[] }) {
   if (!borders) return (<>None</>);
 
   const results = (
-    <div className="inline-flex gap-2 flex-wrap">
+    <div className="inline-flex gap-3 flex-wrap">
       {
         borders.map(countryCode => {
           const countryName = getCountryNameByCountryCode(countryCode);
@@ -23,7 +23,7 @@ export default function CountryLink({ borders }: { borders: string[] }) {
             <Link
               href={countryName}
               key={countryName}
-              className="px-4 py-2 rounded"
+              className="px-4 py-2 rounded hover:scale-110 transition-transform"
             >
               <button >
                 {countryName}
