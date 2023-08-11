@@ -1,0 +1,4 @@
+.page{
+  @apply shadow-inner p-12 box-border;
+  height:calc(100vh - 6rem);
+}

@@ -3,6 +3,7 @@ import Image from "next/image"
 import { use } from "react"
 import getCountriesData from "@/lib/getCountriesData";
 import CountryLink from "./components/CountryLink";
+import style from './style.module.css'
 
 type Props = {
   params: {
@@ -15,14 +16,14 @@ export default function page({ params: { country } }: Props) {
   const countryData = countriesData.find(data => data.name.common.replaceAll(' ', '') === country);
 
   return (
-    <div className="shadow-inner p-12 allBgClr">
+    <div className={style.page + ' allBgClr'}>
       <Link href={`/`} >
         <button className="shadow-xl py-3 px-10 rounded-md font-bold hover:scale-110 transition-transform mb-12">
           ← Back
         </button>
       </Link>
       {countryData && (
-        <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-20 sm:gap-10">
+        <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-20 sm:gap-10 max-w-screen-xl mx-auto">
           <div className="relative aspect-square">
             <Image
               src={countryData.flags.svg}
