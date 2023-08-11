@@ -33,7 +33,7 @@ export default function Items({ countries }: Props) {
       {getFilteredCountries().map(country => {
         return (
           <div
-            className="rounded-md truncate grid grid-rows-2 cursor-pointer"
+            className="rounded-md truncate grid grid-rows-2 cursor-pointer shadow-xl"
             key={country.name.common}
             onClick={() => router.push(country.name.common.replaceAll(' ', ''))}
           >
