@@ -51,6 +51,9 @@ export default function page({ params: { country } }: Props) {
           </div>
         </div>
       )}
+      {!countryData && (
+        <div className="text-4xl">No Target Country!</div>
+      )}
     </div>
   )
 }
