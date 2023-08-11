@@ -21,7 +21,7 @@ export default function CountryLink({ borders }: { borders: string[] }) {
           const countryName = getCountryNameByCountryCode(countryCode);
           return (
             <Link
-              href={countryName}
+              href={countryName.replaceAll(' ', '')}
               key={countryName}
               className="px-4 py-2 rounded hover:scale-110 transition-transform"
             >
