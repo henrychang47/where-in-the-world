@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { use } from "react"
+import { Metadata } from "next";
 import getCountriesData from "@/lib/getCountriesData";
 import CountryLink from "./components/CountryLink";
 import style from './style.module.css'
@@ -10,6 +11,16 @@ type Props = {
     country: string
   }
 }
+
+export async function generateMetadata(
+  { params }: Props,
+): Promise<Metadata> {
+
+  return {
+    title: params.country,
+  }
+}
+
 
 export default function page({ params: { country } }: Props) {
   const countriesData = use(getCountriesData());
@@ -30,7 +41,7 @@ export default function page({ params: { country } }: Props) {
               fill={true}
               alt={countryData.flags.alt}
               loading="lazy"
-              className="object-contain "
+              className="object-contain shadow-xl"
             />
           </div>
           <div className="flex flex-col justify-center lg:gap-10 gap-5">
